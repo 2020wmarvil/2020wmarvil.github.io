@@ -15,6 +15,22 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            img {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 50vw;
+                border-radius: 10px;
+            }
+
+            p {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 0;
+                padding-bottom: 0;
+                text-align: left;
+            }
+        </style>
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -36,49 +52,40 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5">Extendo Arm</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1" style="width: 50vw;">
+                        <div class="flex-grow-1" style="text-align: center;">
                             <p>WheelSteal is a fun and interactive educational game for kids. With a multiplayer open world and a diverse array of exciting abilities, learning to spell couldn’t be more fun!
-                                <br><br>In this short devlog we’ll go over the design and development of the ExtendoArm ability. Designed for both mobility and utility, the ExtendoArm should provide the player with a quick means of both traversing terrain and an easy way to collect the precious letters!
+                                <br><br>In this short devlog we'll go over the design and development of the ExtendoArm ability. Designed for both mobility and utility, the ExtendoArm should provide the player with a quick means of both traversing terrain and an easy way to collect the precious letters!
                             </p>
-                                <br><img src="assets/img/img1.png"><br>
+                                <img src="assets/img/img1.png">
                             <p>Programmatically, this means dynamic behavior based on the player’s tactical decision making. Early in development our team decided to visualize this behavior with a flowchart to clearly define the ExtendoArm’s conditional mechanics.</p>
-                                <br><img src="assets/img/img2.png"><br>
+                                <img src="assets/img/img2.png">
                             <p>This diagram lays out our intended behavior from start to finish.
                                 <br><br>When the ability is first activated, we start by disabling player movement and rotation to prevent them from interfering with their own intended trajectory. We also prevent them from interacting with letters to prevent unwanted interactions between the ExtendoArm and any currently held letters.
                             </p>
-                                <br><img src="assets/img/img3.png"><br>
+                                <img src="assets/img/img3.png">
                             <p>Once the ability has been activated, we cast the arm by enabling its extended animation state.</p>
-                                <br><img src="assets/img/img4.png"><br>
+                                <img src="assets/img/img4.png">
                             <p>After casting, we loop until a collision is detected on the head of the arm, or the ability reaches its full length.</p>
-                                <br><img src="assets/img/img5.png"><br>
+                                <img src="assets/img/img5.png">
                             <p>If no collision is detected, the ability simply retracts and deactivates, allowing the player to move on and continue playing the game.</p>
-                                <br><img src="assets/img/img6.png"><br>
-                                <img src="assets/img/img7.gif"><br>
+                                <img src="assets/img/img6.png">
+                                <img src="assets/img/img7.gif">
                             <p>However, if a collision is detected on the end of the arm, we collect the collided game object.</p>
-                                <br><img src="assets/img/img8.png"><br>
+                                <img src="assets/img/img8.png">
                             <p>If the collidedGameObject is found to be a ‘Collectible’ object such as a letter, we’ll set it as a child of the ExtendoArm, causing it to retract along with the claw. Once the claw is fully retracted, the letter is unparented and allowed to fall to the ground at the player’s feet.</p>
-                                <br><img src="assets/img/img9.png"><br>
+                                <img src="assets/img/img9.png">
                             <p>Alternatively, when hitting an obstacle in the game world, the ExtendoArm acts as a grappling hook, drawing the player toward the target.
                                 <br><br>First we set the starting and target positions and disable the player’s built in CharacterController as well as the effect of gravity on the player.
                             </p>
-                            <br>
-                            <img src="assets/img/img10.png">
-                            <br>
+                                <img src="assets/img/img10.png">
                             <p>Once the positions are set, we interpolate the player’s position between them.</p>
-                            <br>
-                            <img src="assets/img/img11.png">
-                            <img src="assets/img/img12.gif">
-                            <br>
+                                <img src="assets/img/img11.png">
+                                <img src="assets/img/img12.gif">
                             <p>With all of the core usage for the ExtendoArm implemented, we restore the player’s CharacterController and gravity, before initiating the final DeActivation sequence.</p>
-                            <br>
                             <img src="assets/img/img13.png">
-                            <br>
                             <p>Now complete, the ExtendoArm’s deactivation function will be called, restoring standard movement to the player and resetting their ability slot.</p>
-                            <br>
                             <img src="assets/img/img14.png">
-                            <br>
                             <p>With that, we wrap up our discussion on the first iteration of the ExtendoArm ability. Lots of revision will be required to make the ability more intuitive and less punishing when missed, but for a first phase prototype the ability is fun and functional!</p>
-                            <br>
                             <img src="assets/img/img15.png">
                             <img src="assets/img/img16.png">
                         </div>
