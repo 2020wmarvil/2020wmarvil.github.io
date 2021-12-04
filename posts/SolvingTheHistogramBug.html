@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Solving The Histogram Bug - Graphics Engineer Portfolio</title>
+        <meta name="description" content="This game development devlog covers my indie game studio's approach to solving a bug in our first Steam title.">
+
+        <link rel="shortcut icon" type="image/jpg" href="../images/favicon.png"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../stylesheets/post_styles.css">
+
+        <!-- need these for syntax highlighting: -->
+        <link rel="stylesheet" href="../stylesheets/prism.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class=navbar-buttons>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../posts.html">Posts</a></li>
+                    <li class="navbar-name">Wyatt Marvil</li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <section>
+                    <h1>Solving the Histogram Bug</h1>
+                    <div class="post-meta">
+                        <div class="date">
+                            <span class="posted-on">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <time> November 30, 2021 </time>
+                            </span>
+                            <span class="reading-time">
+                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                4-minute read
+                            </span>
+                        </div>
+                    </div>
+                    <div class="inner-content">
+                        <div class="post-container">
+                            </article>
+                                <div class="d-flex flex-column flex-md-row justify-content-between">
+                                    <div class="flex-grow-1" style="text-align: center;">
+
+<h2>What is Tempo?</h2>
+<p>
+<a href="https://store.steampowered.com/app/1445240/Tempo/" target="_blank">Tempo</a> is a free-to-play rhythm platformer I published with my friends over at <a href="https://www.linkedin.com/company/aestronauts/" target="_blank">Aestronauts</a>.  A major facet of the game is mastering each level to claim a spot on one of the global leaderboards, where players are ranked by their 'Beats Per Minute', or BPM.  As a result, we felt it was important to give our players useful metrics to compare themselves with the competition. One such metric is the post-level histogram, intended to show the player a full distribution of player scores from the leaderboard, with their current score and personal record marked for reference. 
+</p>
+
+<figure>
+  <img src="2_SolvingTheHistogramBug/1_Histogram.jpg" alt="Leaderboard Screenshot">
+  <figcaption>Leaderboard screenshot from Tempo level 7, 'Into the Light'.</figcaption>
+</figure>
+
+<h2>The Issue</h2>
+
+<p>
+This histogram is generated at runtime, right as the player enters the post-game interface. 
+During the transition, we pull the top 100 entries from the Steam Leaderboard to populate the local leaderboard. Our oversight lay 
+in using those same scores to populate the histogram as well. Because these are only the top 100 scores, our own score indicator 
+could be thrown far off the plot, resulting in a blatant visual bug and confusion for the player. 
+<br><br>
+One of our core pillars while developing Tempo was to release a game as bug-free as possible, given the small scope of the game. 
+As such, we knew this bug had to be addressed right away. 
+
+</p> <h2>Approach #1</h2> <p>
+
+Initially to resolve this, we considered simply pulling the entire Steam Leaderboard down to recreate the full histogram plot every 
+time the player completes a level. However, as our team anticipated, this turned out to be extremely costly, and on levels with 
+over 10,000 entries the game would freeze while downloading the entries, and the FPS would tank upon completion, likely due to the 
+intense memory usage of the several thousand <code class="language-csharp">LeaderBoardEntry</code> structs. 
+<br><br>
+&#129683; Axed! &#129683;
+
+</p> <h2>Approach #2</h2> <p>
+
+From here, we began considering several routes to address the histogram display bug in a performant manner. One consideration was to 
+set up a middle-man server using Amazon AWS to act as a buffer between clients and the Steam Leaderboards. This server would 
+constantly run a script intermittently polling the Steam Leaderboards for each level, and constructing information to define the 
+histogram plot of the level's leaderboard data. The necessary information would simply be the min score, max score, bucket width, and 
+number of entries in each bucket. Each client could then query for this small struct of data in order to populate a local copy of the 
+histogram in real time. 
+<br><br>
+While possible, this solution was definitely not preferable. Not only did it require a significant upfront technical investment to set 
+up a remote server on a separate platform, but there was also no guarantee that the necessary application would fit nicely within the 
+processing and memory capacity of a Free Tier Ubuntu Micro-Instance. On top of that, as the Tempo user-base continues to grow, there 
+is the potential to overwhelm the single lone server, and setting up a load balancing system to handle the potential stress was outside 
+the particular skill set of our principle engineer (myself). Ultimately, this solution was discarded as too costly and a poor return 
+on investment. 
+<br><br>
+&#129683; Axed! &#129683;
+
+</p> <h2>Approach #3</h2> <p>
+
+The next solution our team discussed was to locally cache all the leaderboard data one time on the players machine, and then update it 
+intermittently. We determined this to be a poor direction, as we can only run code on a client machine while the game is 
+active, and optimally we should avoid downloading massive amounts of data while the user is playing. Furthermore, there is now a 
+tradeoff between performance and keeping the cache up to date. 
+<br><br>
+The real nail in the coffin, however, is that the Steam Leaderboard API doesn't seem to offer a method of retrieving entries based on 
+the time of creation, meaning this approach is fundamentally flawed. In the end, we deemed this system to be needlessly complex and 
+potentially non-performant.
+<br><br>
+&#129683; Axed! &#129683;
+
+</p> <h2>The Final Solution</h2> <p>
+
+The final solution was to choose a number <code class="language-csharp">N</code> to represent how many leaderboard entries a client is 
+willing to download. Now, we download every <code class="language-csharp">nth</code> entry, where 
+<code class="language-csharp">n = TOTAL_ENTRIES / min(TOTAL_ENTRIES, N)</code>, and insert it into the histogram. 
+<br><br>
+This gives us a nice even distribution of the data throughout the plot, with the illusion of a massive amount of 
+sampled data. Even better, with <code class="language-csharp">N</code> as a sliding value, we can conveniently profile and choose an 
+optimal number of entries to maximize both performance and plot quality.  <code class="language-csharp">N</code> could even be chosen 
+dynamically such that it is performant on lower end devices!
+<br><br>
+&#128293; Success! &#128293;
+</p>
+
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="icon-section">
+                    <div class="icon-wrapper">
+                      <div class="icon icon-internal github">
+                        <i class="fab fa-github"></i>
+                      </div>
+                      <div class="icon icon-internal linkedin">
+                        <i class="fab fa-linkedin"></i>
+                      </div>
+                      <div class="icon icon-internal youtube">
+                        <i class="fab fa-youtube"></i>
+                      </div>
+                      <div class="icon icon-internal itch">
+                        <i class="fab fa-itch-io"></i>
+                      </div>
+                      <div class="icon icon-internal steam">
+                        <i class="fab fa-steam"></i>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer">
+                <img class="footer-img no-select" src="../images/layered-waves-haikei.svg" />
+            </div>
+        </div>    
+        <script src="../js/prism.js"></script>
+    </body>
+</html>

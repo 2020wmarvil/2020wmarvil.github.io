@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The ExtendoArm - Graphics Engineer Portfolio</title>
+        <meta name="description" content="This game development devlog goes over the implementation details and design methodology of the ExtendoArm redesign.">
+
+        <link rel="shortcut icon" type="image/jpg" href="../images/favicon.png"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../stylesheets/post_styles.css">
+
+        <!-- need these for syntax highlighting: -->
+        <link rel="stylesheet" href="../stylesheets/prism.css"/>
+        <script src="../js/prism.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class=navbar-buttons>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../posts.html">Posts</a></li>
+                    <li class="navbar-name">Wyatt Marvil</li>
+                </ul>
+            </div>
+            <div class="content">
+                <section>
+                    <h1>The ExtendoArm</h1>
+                    <div class="post-meta">
+                        <div class="date">
+                            <span class="posted-on">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <time> July 1, 2021 </time>
+                            </span>
+                            <span class="reading-time">
+                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                10-minute read
+                            </span>
+                        </div>
+                    </div>
+                    <div class="inner-content">
+                        <div class="post-container">
+                    
+<div class="d-flex flex-column flex-md-row justify-content-between">
+<div class="flex-grow-1" style="text-align: center;">
+
+<h2>Intro</h2>
+
+<p>
+In this short devlog we'll go over the core design principles and development process of the ExtendoArm ability from 
+our game <a href="https://jingyu1999.itch.io/wheel-steal" target="_blank">WheelSteal</a>. Designed for both mobility and 
+utility, the ExtendoArm should provide the player with a quick means of both traversing terrain and an easy way to 
+collect the precious letters!
+</p>
+
+<figure>
+  <img src="1_ExtendoArm/images/img1.png" alt="WheelSteal Screenshot">
+  <figcaption>In-game screenshot of WheelSteal.</figcaption>
+</figure>
+
+<h2>Early Design</h2>
+
+<p>Programmatically, the ExtendoArm means dynamic behavior based on the player’s tactical decision making. Early in 
+development our team decided to visualize this behavior with a flowchart to clearly define the ExtendoArm’s conditional 
+mechanics.
+<br><br>
+This diagram lays out our intended behavior from start to finish.
+</p>
+
+<figure>
+  <img src="1_ExtendoArm/images/img2.png" alt="ExtendoArm Flowchart">
+  <figcaption>Flowchart dictating the ExtendoArm's conditional behaviour.</figcaption>
+</figure>
+
+<h2>Development</h2>
+
+<p> 
+When the ability is first activated, we start by disabling player movement and rotation to prevent them from interfering with their own intended trajectory. We also prevent them from interacting with letters to prevent unwanted interactions between the ExtendoArm and any currently held letters.
+</p>
+
+<pre><code class="language-csharp">[PunRPC]
+public override void Activate() {
+    if (Active || Deactivating || !PickupComplete) return;
+
+    Active = true;
+
+    AbilityManager.movementEnabled = false;
+    AbilityManager.grabEnabled = false;
+    AbilityManager.rotationEnabled = false;
+
+    StartCoroutine(Cast());
+}</code></pre>
+
+<p>Once the ability has been activated, we cast the arm by enabling its extended animation state.</p>
+
+<pre><code class="language-csharp">private IEnumerator Cast() {
+    AbilityManager.clawCollider.enabled = true;
+    AbilityManager.clawAnimator.SetBool("GrabberActive", true);
+
+    // wait until we've entered the appropriate animstate
+    AnimatorStateInfo state = AbilityManager.clawAnimator.GetCurrentAnimatorStateInfo(0);
+    while (!state.IsName("GrabberArmExtend")) {
+        state = AbilityManager.clawAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForEndOfFrame();
+    }
+}</code></pre>
+
+<p>After casting, we loop until a collision is detected on the head of the arm, or the ability reaches its full length.</p>
+
+<pre><code class="language-csharp">// let the animation play until time elapses or it hits a target
+float timeRemaining = state.length / state.speed;
+float dt = 0.01f;
+
+while (timeRemaining > 0f) {
+    if (collidedGameObject != null) break;
+
+    yield return new WaitForSeconds(dt);
+    timeRemaining -= dt;
+}</code></pre>
+
+<h2>Case 1: No Collision</h2>
+
+<p>If no collision is detected, the ability simply retracts and deactivates, allowing the player to move on and continue playing the game.</p>
+
+<pre><code class="language-csharp">// if we did not hit anything during the cast, then the extendo arm breaks!
+if (collidedGameObject == null) {
+    AbilityManager.clawCollider.enabled = false;
+    AbilityManager.clawAnimator.SetBool("GrabberActive", false);
+
+    StartCoroutine(DeActivate());
+
+    yield break;
+}</code></pre>
+
+<figure>
+  <img src="1_ExtendoArm/images/img7.gif" alt="ExtendoArm Failure">
+  <figcaption>ExtendoArm being used unsuccessfully.</figcaption>
+</figure>
+
+<h2>Case 2: Hit Collectible</h2>
+
+<p>However, if a collision is detected on the end of the arm, we collect the collided game object.</p>
+
+<pre><code class="language-csharp">public void OnTriggerEnter(Collider collider) {
+    player.GetComponent&ltScript_AbilitiesExtendoArm_Wyatt>().Grab(collider.gameObject);
+}</code></pre>
+
+<p>If the collidedGameObject is found to be a <code class="language-csharp">Collectible</code> object such as a letter, we’ll set it 
+as a child of the ExtendoArm, causing it to retract along with the claw. Once the claw is fully retracted, the letter is unparented 
+and allowed to fall to the ground at the player’s feet.</p>
+
+<pre><code class="language-csharp">// handle claw collision
+if (collidedGameObject.CompareTag("Collectible")) { // we hit a letter, pull it in
+    collidedGameObject.transform.parent = AbilityManager.clawCollider.gameObject.transform;
+    collidedGameObject.transform.localPosition = Vector3.zero;
+
+    yield return new WaitForSeconds(0.5f);
+
+    collidedGameObject.transform.parent = null;</code></pre>
+
+<h2>Case 3: Hit Terrain</h2>
+
+<p>
+Alternatively, when hitting an obstacle in the game world, the ExtendoArm acts as a grappling hook, drawing the player toward the target.
+<br><br>
+First we set the starting and target positions and disable the player’s built in <code class="language-csharp">CharacterController</code> as well as the effect of gravity on the player.
+</p>
+
+<pre><code class="language-csharp">} else { // otherwise, pull ourselves in!
+    Vector3 startPos = transform.position;
+    Vector3 targetPos = collidedGameObject.transform.position;
+
+    AbilityManager.playerMovement.controllerReference.enabled = false;
+    AbilityManager.SetGravity(false);
+}</code></pre>
+
+<p>Once the positions are set, we interpolate the player’s position between them.</p>
+
+<pre><code class="language-csharp">float t = 0f;
+while (t &lt 1f) {
+    t += Time.deltaTime / 0.5f; // duration of 0.5 seconds
+    Vector3 newPos = Vector3.Lerp(startPos, targetPos, t);
+    AbilityManager.playerMovement.controllerReference.position = newPos;
+    yield return new WaitForEndOfFrame();
+}</code></pre>
+
+<figure>
+  <img src="1_ExtendoArm/images/img12.gif" alt="Grappling with the ExtendoArm">
+  <figcaption>Grappling with the ExtendoArm.</figcaption>
+</figure>
+
+<h2>Cleanup</h2>
+
+<p>With all of the core usage for the ExtendoArm implemented, we restore the player’s <code class="language-csharp">CharacterController</code> 
+and gravity, before initiating the final <code class="language-csharp">DeActivation</code> sequence.</p>
+
+<pre><code class="language-csharp">    AbilityManager.playerMovement.controllerReference.enabled = true;
+    AbilityManager.SetGravity(true);
+}
+
+StartCoroutine(DeActivate());</code></pre>
+
+<p>Now, the ExtendoArm’s deactivation function will be called, restoring standard movement to the player and resetting their ability slot.</p>
+
+<pre><code class="language-csharp">// Restore movement
+AbilityManager.movementEnabled = true;
+AbilityManager.grabEnabled = true;
+AbilityManager.rotationEnabled = true;
+
+// Ensure all animations are complete, and then remove this component from the GameObject
+yield return new WaitForSeconds(0.1f);
+
+// Remove the ability from the player
+AbilityManager.ability = null;
+Destroy(GetComponent&ltScript_AbilitiesExtendoArm_Wyatt>());</code></pre>
+
+<p>With that, we wrap up our discussion on the first iteration of the ExtendoArm ability. Lots of revision will be required to make the ability more intuitive and less punishing when missed, but for a first phase prototype the ability is fun and functional!</p>
+
+<figure>
+  <img src="1_ExtendoArm/images/img15.png" alt="Grammar-naut Posing">
+  <figcaption>Grammar-naut posing.</figcaption>
+</figure>
+
+<figure>
+  <img src="1_ExtendoArm/images/img16.png" alt="WheelSteal Logo">
+  <figcaption>The WheelSteal Logo.</figcaption>
+</figure>
+
+</div>
+</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="icon-section">
+                    <div class="icon-wrapper">
+                      <div class="icon icon-internal github">
+                        <i class="fab fa-github"></i>
+                      </div>
+                      <div class="icon icon-internal linkedin">
+                        <i class="fab fa-linkedin"></i>
+                      </div>
+                      <div class="icon icon-internal youtube">
+                        <i class="fab fa-youtube"></i>
+                      </div>
+                      <div class="icon icon-internal itch">
+                        <i class="fab fa-itch-io"></i>
+                      </div>
+                      <div class="icon icon-internal steam">
+                        <i class="fab fa-steam"></i>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer">
+                <img class="footer-img no-select" src="../images/layered-waves-haikei.svg" />
+            </div>
+        </div>
+    </body>
+</html>

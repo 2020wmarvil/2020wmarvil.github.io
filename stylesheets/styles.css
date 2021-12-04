@@ -1,0 +1,926 @@
+body {
+    font-family: "Source Sans Pro", sans-serif; /*font-family: 'Nunito', sans-serif;*/
+    margin: 0;
+    color: white;
+    background: #202731;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.landing {
+    background-image: url('../images/bg5.gif');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+    height: 100vh;
+    padding:0;
+    margin:0;
+}
+
+h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 0;
+    z-index: 5;
+}
+
+.descrip {
+    z-index: 5;
+    font-size: 	1.1250em;
+}
+
+.landing_name {
+    letter-spacing: 5px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.65;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    width: 60vw;
+  }
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+    padding: 100px 8vw;
+}
+
+.salmon {
+    background: #FFAF87;
+}
+
+.tangerine {
+    background: #FF8E72;
+}
+
+.bittersweet {
+    background: #ED6A5E;
+}
+
+.custom-shape-divider-top-1630366959 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1630366959 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 75px;
+}
+
+.custom-shape-divider-top-1630366959 .shape-fill {
+    fill: #202731;
+}
+
+.custom-shape-divider-top-1630367696 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1630367696 svg {
+    position: relative;
+    display: block;
+    width: calc(120% + 1.3px);
+    height: 135px;
+}
+
+.custom-shape-divider-top-1630367696 .shape-fill {
+    fill: #FFAF87;
+}
+
+.custom-shape-divider-top-1630369094 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1630369094 svg {
+    position: relative;
+    display: block;
+    width: calc(111% + 1.3px);
+    height: 72px;
+}
+
+.custom-shape-divider-top-1630369094 .shape-fill {
+    fill: #FF8E72;
+}
+
+.custom-shape-divider-top-1630369170 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1630369170 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1630369170 .shape-fill {
+    fill: #FF8E72;
+}
+
+.footer-img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+
+/* ################################### PROJECTS FILTER ########################################## */
+/* https://www.w3schools.com/howto/howto_js_filter_elements.asp */
+
+.filterDiv-wrapper {
+
+  width: 100%;
+  text-align: center;
+
+
+}
+
+.container a {
+}
+  
+.filterDiv {
+  background-color: #202731;
+  color: #ffffff;
+  width: 15vw;
+  height: 24.4vh;
+  text-align: center;
+  margin: 0.5vw;
+  margin-bottom: 2.9vw;
+  display: none; /* Hidden by default */
+  font-size: 32px;
+  box-shadow: 0 0 1px 1px #202731;
+  transition: all 0.3s ease;
+  z-index: 100;
+
+  background-size: auto 100%;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+}
+
+.filterDiv:hover {
+  -webkit-transform:scaleX(1.26);
+    -moz-transform:scaleX (1.26);
+    -ms-transform:scaleX  (1.26);
+    -o-transform:scaleX   (1.26);
+    transform:scaleX      (1.26);
+}
+.filterDiv:hover .filterDiv-row2 .title {
+  -webkit-transform:scaleY(1.26);
+    -moz-transform:scaleY (1.26);
+    -ms-transform:scaleY  (1.26);
+    -o-transform:scaleY   (1.26);
+    transform:scaleY      (1.26);
+}
+
+.filterDiv-inner {
+  position: relative;
+  padding-top: 0;
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filterDiv-row1 {
+  height: 100%;
+}
+.filterDiv-row2 {
+  background-color: #202731;
+  box-shadow: 0 0 1px 1px #202731;
+  font-size: 0.6em;
+  height: 5vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: inline-block;
+}
+
+/* ################################### BUTTONS ########################################## */  
+  /* Add a dark background to the active button */
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+  .static {
+    position:absolute;
+    background: white;
+  }
+  
+  .static:hover {
+    opacity:0;
+  }
+
+  .img {
+      max-height: 100px;
+      max-width: 100px;
+  }
+
+  .fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.btn41-43 {
+  padding: 10px 25px;
+  margin-top: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  font-size: 	1.1250em;
+}
+
+.btn-41 {
+  border: 2px solid rgb(255, 255, 255);
+  z-index: 1;
+  color: white;
+
+}
+
+.btn-41:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  background: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+
+.btn-41:hover {
+  color: rgb(0, 0, 0);
+  transform: scale(1.15);
+
+  margin-left:  0.5em;
+  margin-right: 0.5em;  
+
+  box-shadow: inset 0px 0px 0px 1.1em white;
+}
+
+.btn-41-selected {
+  color: rgb(0, 0, 0);
+  transform: scale(1.15);
+  background-color: white;
+  margin-left:  0.5em;
+  margin-right: 0.5em;  
+
+  box-shadow: inset 0px 0px 0px 0.1em white; /* Added */
+}
+
+.btn-41:hover:after {
+  position: absolute;
+  left: auto;
+  right: -0.001px;
+  width: 100%;
+}
+
+.btn-41:active {
+  top: 2px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.bt {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ################################### EXTERNAL LINK BUTTONS ########################################## */
+html {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+}
+
+.wrapper {
+  display: inline-flex;
+  margin-top: 4.5vh;
+}
+
+.wrapper .icon {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 	1.1250em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.github {
+  background-color: #ffffff;
+  color: #333333;
+}
+.wrapper .github:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+.youtube {
+  background-color: #ffffff;
+  color: #de463b;
+}
+.wrapper .youtube:hover {
+  background-color: #de463b;
+  color: #ffffff;
+}
+.steam {
+  background-color: #ffffff;
+  color: #1C2431;
+}
+.wrapper .steam:hover {
+  background-color: #1C2431;
+  color: #ffffff;
+}
+.itch {
+  background-color: #ffffff;
+  color: #FA5C5C;
+}
+.wrapper .itch:hover {
+  background-color: #FA5C5C;
+  color: #ffffff;
+}
+.linkedin {
+  background-color: #ffffff;
+  color: #0A66C2; 
+}
+.wrapper .linkedin:hover {
+  background-color: #0A66C2; 
+  color: #ffffff;
+}
+
+/* ############################### TIMELINE ################################# */
+/* Timeline Container */
+.timeline {
+  background: #202731;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Card container */
+.card {
+  position: relative;
+  max-width: 1000px;
+}
+
+/* setting padding based on even or odd */
+.card:nth-child(odd) {
+  padding: 30px 0 30px 30px;
+}
+.card:nth-child(even) {
+  padding: 30px 30px 30px 0;
+}
+/* Global ::before */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  border: solid #ED6A5E;
+}
+
+/* Setting the border of top, bottom, left */
+.card:nth-child(odd)::before {
+  left: 0px;
+  top: -4.5px;
+  bottom: -4.5px;
+  border-width: 5px 0 5px 5px;
+  border-radius: 50px 0 0 50px;
+}
+
+/* Setting the top and bottom to "-5px" because earlier it was out of a pixel in mobile devices */
+.card:nth-child(odd)::before {
+  top: -5px;
+  bottom: -5px;
+}
+
+/* Setting the border of top, bottom, right */
+.card:nth-child(even)::before {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-width: 5px 5px 5px 0;
+  border-radius: 0 50px 50px 0;
+}
+
+/* Removing the border if it is the first card */
+.card:first-child::before {
+  border-top: 0;
+  border-top-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's odd */
+.card:last-child:nth-child(odd)::before {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's even */
+.card:last-child:nth-child(even)::before {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Information about the timeline */
+.info {
+  display: flex;
+  flex-direction: column;
+  background: #323740;
+  color: #8f9196;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Title of the card */
+.card-title {
+  color: #ED6A5E;
+  position: relative;
+  padding-bottom: 0.5vh;
+}
+
+.card-subtitle {
+  color: #ED6A5E;
+  position: relative;
+  padding-bottom: 1vh;
+}
+
+/* Timeline dot  */
+.card-title::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 999px;
+  border: 3px solid #FFAF87;
+}
+
+.card-content {
+  z-index: 10;
+  font-size: 1.05em;
+}
+
+.card-image {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 0.5px #ED6A5E;
+
+  margin-left: 0.5em;
+  position: absolute;
+  top: 45%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+
+/* text right if the card is even  */
+.card:nth-child(even) > .info > .card-title {
+  text-align: right;
+}
+
+.card:nth-child(even) > .info > .card-subtitle {
+  text-align: right;
+}
+
+/* setting dot to the left if the card is odd */
+.card:nth-child(1) > .info > .card-title::before {
+  left: -45.5px;
+  top: -47px;
+}
+
+/* setting dot to the left if the card is odd */
+.card:nth-child(2n+3) > .info > .card-title::before {
+  left: -45px;
+  top: 5px;
+}
+
+/* setting dot to the right if the card is odd */
+.card:nth-child(even) > .info > .card-title::before {
+  right: -45px;
+  top: 5px;
+}
+
+.card:nth-last-child(1):nth-child(odd) > .info > .card-title::before {
+  left: -45.5px;
+  top: 100px;
+}
+
+.card:nth-last-child(1):nth-child(even) > .info > .card-title::before {
+  right: -45.5px;
+  top: 100px;
+}
+
+/* ################################# READ MORE ################################## */
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: all .25s ease;
+
+  margin: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  padding-top: 2em;
+  padding-bottom: 0;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  display: flex;
+  justify-content: center;
+}
+
+/* ############################## LANDING PAGE ANIMATION ############################ */
+
+.landing-page-anim {
+  position: relative;
+  color: white;
+}
+
+.landing-page-anim .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.landing-page-anim .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-left: -7%;
+  margin-right: -7%;
+  height: 3px;
+  width: 114%;
+  background-color: white;
+  transform-origin: 0.5 0;
+}
+
+.landing-page-anim .letters {
+  display: inline-block;
+  opacity: 0;
+}
+
+.landing-page-row {
+  opacity: 0;
+}
+
+/* ############################### LANDING PAGE SCROLL ANIM ######################## */
+.landing-scroll div {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+#landing-scroll-anim {
+  min-height: 0 !important;
+  padding: 0 0 !important;
+}
+
+#landing-scroll-anim div {
+  padding-top: 70px;
+}
+
+#landing-scroll-anim div span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  margin-left: -12px;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  animation-delay: 2500ms;
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+/* ################ ABOUT ME BLURB ########################### */
+
+.profile-picture {
+  border-radius: 50%;
+  width: 200px;
+  height: auto;
+
+  box-shadow: 0px 0px 0px 8px #ED6A5E;
+  image-rendering: smooth;
+}
+
+.about-me-column1 {
+  padding: 5px;
+}
+
+.about-me-column2 {
+  padding: 5px;
+  margin-left: 5vw;
+  font-size: 	1.1250em;
+  line-height: 1.5rem;
+}
+
+.about-me-column2 p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.about-me-column3 {
+  margin-left: 5vw;
+  font-size: 	1.1250em;
+  width: 30%;
+}
+
+.about-me-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+a {
+  color: #ED6A5E;
+}
+
+.p-large {
+  font-size: 1.1250em;
+}
+
+/* #################### PROJECT HOVERS ################## */
+.tempo {
+    background-image: url("../images/project/tempo.jpg");
+}
+.tempo:hover {
+    background-image: url("../images/project/tempo.gif");
+}
+.wheel-steal {
+    background-image: url("../images/project/kbi.png");
+}
+.wheel-steal:hover {
+    background-image: url("../images/project/kbi.gif");
+}
+.shadercookbook {
+    background-image: url("../images/project/ShaderCookbook-Static.gif");
+}
+.shadercookbook:hover {
+    background-image: url("../images/project/ShaderCookbook.gif");
+}
+.unreal-shader-techniques {
+    background-image: url("../images/project/unreal-shader-static.gif");
+}
+.unreal-shader-techniques:hover {
+    background-image: url("../images/project/unreal-shader-technique.gif");
+}
+.em-engine {
+    background-image: url("../images/project/em-engine.png");
+}
+.em-engine:hover {
+    background-image: url("../images/project/em-engine.gif");
+}
+.ghost-town-gunner {
+    background-image: url("../images/project/ghost-town-gunner.png");
+}
+.ghost-town-gunner:hover {
+    background-image: url("../images/project/gtg.gif");
+}
+.educasters {
+    background-image: url("../images/project/educasters.png");
+}
+.educasters:hover {
+    background-image: url("../images/project/educasters.gif");
+}
+.bezos {
+    background-image: url("../images/project/Bezos.png");
+}
+.bezos:hover {
+    background-image: url("../images/project/Bezos.gif");
+}
+.quantum-leap {
+    background-image: url("../images/project/ql.png");
+}
+.quantum-leap:hover {
+    background-image: url("../images/project/ql.gif");
+}
+.stuck-with-you {
+    background-image: url("../images/project/stuck-with-you.png");
+}
+.stuck-with-you:hover {
+    background-image: url("../images/project/stuck-with-you.gif");
+}
+.super-upbeat {
+    background-image: url("../images/project/trojanduck.png");
+}
+.super-upbeat:hover {
+    background-image: url("../images/project/trojanduck.png");
+}
+.moonshot {
+    background-image: url("../images/project/Moonshot-Static.gif");
+}
+.moonshot:hover {
+    background-image: url("../images/project/Moonshot.gif");
+}
+.chaos2d {
+    background-image: url("../images/project/chaos.jpg");
+    background-size: cover;
+}
+.chaos2d:hover {
+    background-image: url("../images/project/chaos.jpg");
+}
+.chaos-math {
+    background-image: url("../images/project/chaosmath.jpg");
+}
+.chaos-math:hover {
+    background-image: url("../images/project/chaosmath.jpg");
+}
+.vulkan-renderer {
+    background-image: url("../images/project/Vulkan.png");
+}
+.vulkan-renderer:hover {
+    background-image: url("../images/project/Vulkan.png");
+}
+.opengl-engine {
+    background-image: url("../images/project/opengl_engine.png");
+}
+.opengl-engine:hover {
+    background-image: url("../images/project/opengl_engine.gif");
+}
+.software-renderer {
+    background-image: url("../images/project/test.png");
+}
+.software-renderer:hover {
+    background-image: url("../images/project/test.gif");
+}
+.otis {
+    background-image: url("../images/project/otis.PNG");
+}
+.otis:hover {
+    background-image: url("../images/project/otis.PNG");
+}
+.paint-audio {
+    background-image: url("../images/project/test.png");
+}
+.paint-audio:hover {
+    background-image: url("../images/project/test.gif");
+}
+.set-timer {
+    background-image: url("../images/project/set-timer.png");
+}
+.set-timer:hover {
+    background-image: url("../images/project/set-timer.gif");
+}

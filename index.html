@@ -1,125 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Wyatt Marvil</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wyatt Marvil - Graphics Engineer Portfolio</title>
+        <meta name="description" content="Hi, I'm Wyatt. I specialize in game engine development, graphics engineering, and tool development.">
+
+        <link rel="shortcut icon" type="image/jpg" href="images/favicon.png"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="./stylesheets/styles.css">
     </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Wyatt Marvil</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.JPG" alt="" /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#blog">Blog</a></li>
-                </ul>
+    <body>
+        <!--  https://getbootstrap.com/docs/4.0/components/carousel/ for slideshow of game play-->
+        <!-- day / night mode -->
+        <section class="landing">
+            <div class="overlay"></div>
+            <div class="center">
+              <h1 class="landing-page-anim">
+                <span class="text-wrapper">
+                  <span class="line line1"></span>
+                  <span class="letters letters-left">WYATT</span>
+                  <span class="letters letters-right">MARVIL</span>
+                  <span class="line line2"></span>
+                </span>
+              </h1>
+
+              <div class="landing-page-row row">
+                <a href="https://github.com/2020wmarvil" target="_blank"><button class="btn41-43 btn-41 bt">Github</button></a>
+                <a href="https://www.linkedin.com/in/wyattmarvil/" target="_blank"><button class="btn41-43 btn-41 bt">LinkedIn</button></a>
+                <a href="https://ydog.itch.io/" target="_blank"><button class="btn41-43 btn-41 bt">Itch</button></a>
+                <a href="./posts.html"><button class="btn41-43 btn-41 bt">Posts</button></a>
+                <!--<a href="https://steamcommunity.com/profiles/76561198150498740/" target="_blank"><button class="btn41-43 btn-41 bt">Steam</button></a>-->
+              </div>
+
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+              <script src="js/anime.min.js"></script>
             </div>
-        </nav>
-        <!-- Page Content-->
-        <div class="container-fluid p-0">
-            <!-- About-->
-            <section class="resume-section" id="about">
-                <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        Wyatt
-                        <span class="text-primary">Marvil</span>
-                    </h1>
-                    <div class="subheading mb-5">
-                        <a href="mailto:2020wmarvil@gmail.com">2020wmarvil@gmail.com</a>
-                    </div>
-                    <p class="lead mb-5">
-                        I'm Wyatt, a student at RPI studying Computer Science, Game Design, and Computer Systems Engineering. 
-                        I love participating in game jams and hackathons with my
-                        <a href="https://briannata.github.io/" > girlfriend</a>
-                        and my indie team the
-                        <a href="https://www.linkedin.com/company/74046630/admin/"> Aestronauts</a>.
-                        I'm currently working as the Lead Gameplay Programmer for
-                        <a href="https://www.knucklebones.us/" > Knucklebones Interactive</a>.
-                    </p>
-                    <p class="lead mb-5">
-                        I specialize in tools programming, game engine development, and graphics engineering, and occasionally 
-                        share my thoughts in the blog section below (WIP)!
-                    </p>
-                    <p class="lead mb-5">
-                        Check out my resume 
-                        <a href="assets/WyattMarvil_resume.pdf" download target="_blank" rel="noopener noreferrer"> here! </a>
-                    </p>
-                    <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/wyattmarvil/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/2020wmarvil"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="https://ydog.itch.io/"><i class="fab fa-itch-io"></i></a>
-                        <a class="social-icon" href="https://steamcommunity.com/profiles/76561198150498740/"><i class="fab fa-steam"></i></a>
-                    </div>
-                </div>
+
+            <section id="landing-scroll-anim" class="landing-scroll">
+              <div><span></span></div>
             </section>
-            <hr class="m-0" />
-            <!-- Projects-->
-            <section class="resume-section" id="projects">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Projects</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <a target="_blank" href="https://github.com/2020wmarvil/opengl_engine"><h3 class="mb-0">OpenGL Engine</h3></a>
-                            <p>3D Rendering Engine using OpenGL and GLSL</p>
-                        </div>
+        </section>
+        <section style="padding-bottom: 0;">
+            <h1>About Me</h1><br>
+
+            <div class="about-me-row">
+              <div class="about-me-column1">
+                <img src="images/profile.JPG" alt="Profile Picture" class="profile-picture no-select">
+              </div>
+              <div class="about-me-column2">
+                <p>I'm Wyatt, a student at RPI studying Computer Science, Game Design, and Computer Systems Engineering. 
+                  
+                  I enjoy staying up late for game jams with my partners at our indie studio <a href="https://www.linkedin.com/company/aestronauts/" target="_blank">Aestronauts</a>, 
+                  and crunching for hackathons with my girlfriend. 
+                  
+                  I'm currently working as the Lead Gameplay Programmer for Knucklebones Interactive.
+                  <br><br>
+                  I specialize in game engine development, graphics engineering, and tool development and occasionally <a href="./posts.html">post</a> about my work.
+                  <br><br>
+                </p>
+          <div class="row">
+            <a href="./assets/WyattMarvil_resume.pdf" target="_blank"><button class="btn41-43 btn-41 bt">Download Resume</button></a>
+          </div>
+              </div>
+              <div class="about-me-column3"> </div>
+            </div>
+
+            <div>
+              <div class="timeline">
+                <input type="checkbox" class="read-more-state" id="post-2" />
+                <div class="outer read-more-wrap">
+                  <!-- card1 -->
+                  <div class="card">
+                    <div class="info">
+
+                      <h2 class="card-title">
+                        Lead Gameplay Programmer
+                        <img src="images/exp_KBI.jfif" class="card-image">
+                      </h2>
+                      <h3 class="card-subtitle">
+                        <a href="https://www.knucklebones.us/interactive" target="_blank">Knucklebones Interactive</a>
+                      </h3>
+                      <p class="card-content">
+                        I lead the programming department and work alongside the Project Managers to facilitate collaboration between four other departments totaling over 20 individuals. 
+                        <br><br>
+                        I have led two projects from initial concept to playable prototype, and took responsibility for gameplay systems, networking, graphics, game AI, and tool development. 
+                        <br><br>
+                        As the lead, I make technical decisions and design the overall architecture of primary systems.  I also mentor and support new members of the team by producing quality documentation, engaging in 1on1s, weekly department meetings, and code reviews. 
+                        <br><br>
+                        In addition, I give interal presentations and workshops to share my experience in areas such as source control and graphics. 
+                      </p>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <a target="_blank" href="https://github.com/2020wmarvil/moonshot"><h3 class="mb-0">Moonshot</h3></a>
-                            <p>2D Game built in 24 hours for the Github Game Off 2020 Jam</p>
-                        </div>
+                  </div>
+                  <!-- card2 -->
+                  <div class="card">
+                    <div class="info">
+                      <h2 class="card-title">
+                        Gameplay/Graphics Programmer
+                        <img src="images/exp_Aestro.jfif" class="card-image" style="right: 16em">
+                      </h2>
+                      <h3 class="card-subtitle"><a href="https://www.linkedin.com/company/aestronauts/" target="_blank">Aestronauts</a></h3>
+                      <p class="card-content">
+                        Cofounded an indie game studio alongside 5 of my coworkers and participated in a start-up incubation program to rapidly prototype multiple video game concepts with a focus on polish and publishing practices. 
+                        <br><br>
+                        After 3 months of development and $8,000 in funding, we released the free-to-play rhythm platformer <a href="https://store.steampowered.com/app/1445240/Tempo/" target="_blank">Tempo</a> on Steam. 
+                        <br><br>
+                        Tempo reached the top 5 trending on Steam during its first week of release and has over 40,000 unique lifetime players. 
+                      </p>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <a target="_blank" href="https://github.com/2020wmarvil/labyrinth-of-sound"><h3 class="mb-0">Labyrinth of Sound</h3></a>
-                            <p>2D Game created for the 2020 PROCJAM using procedural sound, color, and maze generation</p>
-                        </div>
+                  </div>
+                  <!-- card3 -->
+                  <div class="card read-more-target">
+                    <div class="info">
+                      <h2 class="card-title">
+                        Associate Software Engineer
+                        <img src="images/exp_Optum.jfif" class="card-image">
+                      </h2>
+                      <h3 class="card-subtitle"><a href="https://www.optum.com/" target="_blank">Optum</a></h3>
+                      <p class="card-content">
+                        Collaborated on a small internal development team creating tooling to expedite the development of healthcare software.
+                        <br><br>
+                        Participated in two-week sprints and led product pitches in Shark-Tank style presentations.
+                      </p>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <a target="_blank" href="https://github.com/briannata/otis"><h3 class="mb-0">OTIS</h3></a>
-                            <p>Occupancy Tracking System using computer vision, machine learning, and full stack web technologies</p>
-                        </div>
+                  </div>
+                  <!-- card4 -->
+                  <div class="card read-more-target">
+                    <div class="info">
+                      <h2 class="card-title">
+                        Tools Programmer
+                        <img src="images/exp_REG.jfif" class="card-image" style="right: 9.2em">
+                      </h2>
+                      <h3 class="card-subtitle"><a href="https://razoredgegames.com/" target="_blank">Razor Edge Games</a></h3>
+                      <p class="card-content">
+                        Led small team in development of backend development tools for the AAA title <a href="https://store.steampowered.com/app/727660/Eden_Falling/" target="_blank">Eden Falling</a> and provided support for the gameplay programming and design teams.
+                      </p>
                     </div>
+                  </div>
+                  <!-- card5 -->
+                  <div class="card read-more-target">
+                    <div class="info">
+                      <h2 class="card-title">
+                        Software Engineer Intern
+                        <img src="images/exp_Nebula.jfif" class="card-image">
+                      </h2>
+                      <h3 class="card-subtitle"><a href="http://nebulacompute.com/" target="_blank">Nebula Space Enterprise</a></h3>
+                      <p class="card-content">
+                        Researched, designed, and implemented solutions for a high-performance cluster computing system to survive environmental conditions in low earth orbit.
+                        <br><br>
+                        Contributed to payload design for multi-million dollar image processing satellite.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- card6 -->
+                  <div class="card read-more-target">
+                    <div class="info">
+                      <h2 class="card-title">
+                        B.S. Computer Science and Computer Graphics
+                        <img src="images/exp_RPI.jfif" class="card-image" style="right: 23em">
+                      </h2>
+                      <h3 class="card-subtitle"><a href="https://science.rpi.edu/computer-science" target="_blank">Rensselaer Polytechnic Institute</a></h3>
+                    </div>
+                  </div>
                 </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Blog -->
-            <section class="resume-section" id="blog">
-                <div>
-                <h2 class="mb-5">Blog</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <a href="./blog1.html"><h3 class="mb-0">Extendo Arm</h3></a>
-                            <p>The first iteration of the extendo arm.</p>
-                        </div>
-                    </div>
+
+                <label for="post-2" class="read-more-trigger"></label>
+              </div>
+            </div>
+            
+        </section>
+        <section class="salmon">
+            <h1>Projects</h1><br>
+                <div id="myBtnContainer">
+                    <button id="1"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('all', this.id)"> All</button>
+                    <button id="2"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('games', this.id)"> Games</button>
+                    <button id="3"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('engines', this.id)"> Engines</button>
+                    <button id="4"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('graphics', this.id)"> Graphics</button>
+                    <button id="5"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('unity', this.id)"> Unity</button>
+                    <button id="6"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('unreal', this.id)"> Unreal</button>
+                    <button id="7"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('opengl', this.id)"> OpenGL</button>
+                    <button id="8"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('vulkan', this.id)"> Vulkan</button>
+                    <button id="9"  class="filterDivButton btn41-43 btn-41" onclick="filterSelection('tools', this.id)"> Tools</button>
+                    <button id="10" class="filterDivButton btn41-43 btn-41" onclick="filterSelection('software', this.id)"> Software</button>
                 </div>
-            </section>
-            <hr class="m-0" />
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+                <br>
+                
+                <div class=filterDiv-wrapper>
+
+                <div class="container"> 
+                    <a href="https://store.steampowered.com/app/1445240/Tempo/" target="_blank"> 
+                      <div class="filterDiv games unity tempo"                           >
+                        <div class="filterDiv-inner">
+                          <div class="filterDiv-row1"> </div>
+                          <div class="filterDiv-row2"><div class="title">Tempo</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://jingyu1999.itch.io/wheel-steal"            target="_blank"> 
+                      <div class="filterDiv games unity wheel-steal"                     >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Wheel Steal</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/ShaderCookbook"     target="_blank"> 
+                      <div class="filterDiv graphics unity shadercookbook"         >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Shader Cookbook</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/UnrealShaderTechniques"     target="_blank"> 
+                      <div class="filterDiv graphics unity unreal unreal-shader-techniques"         >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">UnrealShaderTechniques</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/EM-Engine"          target="_blank"> 
+                      <div class="filterDiv engines graphics opengl em-engine"     >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">EM Engine</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://vluk1.itch.io/ghost-town-gunner"           target="_blank"> 
+                      <div class="filterDiv games unity ghost-town-gunner"               >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Ghost Town Gunner</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://jingyu1999.itch.io/educasters"             target="_blank"> 
+                      <div class="filterDiv games unity educasters"                      >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Educasters</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://ydog.itch.io/bezos"                        target="_blank"> 
+                      <div class="filterDiv games unity bezos"                           >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Bezos Prime</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://ydog.itch.io/quantum-leap"                 target="_blank"> 
+                      <div class="filterDiv games quantum-leap"                    >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Quantum Leap</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://www.trojanduckgames.com/"           target="_blank"> 
+                      <div class="filterDiv games unity tools super-upbeat"                                 >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Super Upbeat</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://ydog.itch.io/stuck-with-you"               target="_blank"> 
+                      <div class="filterDiv games unity stuck-with-you"                  >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Stuck With You</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://ydog.itch.io/moonshot"                     target="_blank"> 
+                      <div class="filterDiv games moonshot"                        >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Moonshot</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <!--<a href="https://ydog.itch.io/labyrinth-of-sound"           target="_blank"> 
+                      <div class="filterDiv games"                                 >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Labyrinth of Sound</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/getting-loopy"      target="_blank"> 
+                      <div class="filterDiv games opengl"                          >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Getting Loopy</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://palinus.itch.io/bullet-hell-jam-entry"     target="_blank"> 
+                      <div class="filterDiv games unity"                                 >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Electrodus</div></div>
+                        </div>
+                      </div>
+                    </a>-->
+                    <a href="https://github.com/2020wmarvil/Chaos2D"            target="_blank"> 
+                      <div class="filterDiv engines graphics opengl chaos2d"       >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Chaos2D</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/ChaosMath"          target="_blank"> 
+                      <div class="filterDiv engines tools chaos-math"              >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">ChaosMath</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/VulkanRenderer"     target="_blank"> 
+                      <div class="filterDiv graphics vulkan vulkan-renderer"       >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Vulkan Renderer</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="https://github.com/2020wmarvil/opengl_engine"      target="_blank"> 
+                      <div class="filterDiv engines graphics opengl opengl-engine" >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">OpenGL Engine</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <!--<a href="https://github.com/2020wmarvil/SoftwareRenderer"   target="_blank"> 
+                      <div class="filterDiv graphics tools software-renderer"      >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">Software Renderer</div></div>
+                        </div>
+                      </div>
+                    </a>-->
+                    <a href="https://github.com/briannata/otis"                 target="_blank"> 
+                      <div class="filterDiv software otis"                         >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">OTIS</div></div>
+                        </div>
+                      </div>
+                    </a>
+                    <!--<a href="https://github.com/2020wmarvil/PaintAudio"         target="_blank"> 
+                      <div class="filterDiv tools software paint-audio"            >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">PaintAudio</div></div>
+                        </div>
+                      </div>
+                    </a>-->
+                    <a href="https://github.com/2020wmarvil/set-timer"          target="_blank"> 
+                      <div class="filterDiv tools set-timer"                       >
+                        <div class="filterDiv-inner">
+                          <div class=filterDiv-row1></div>
+                          <div class="filterDiv-row2"><div class="title">SetTimer</div></div>
+                        </div>
+                      </div>
+                    </a>
+                </div>
+
+                </div>
+            <div class="custom-shape-divider-top-1630366959">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+        <section class="tangerine">
+          <h1>Shaders</h1><br>
+          <p class="p-large">Work In Progress</p>
+          <br>
+          <p class="p-large">
+            In the meantime, here are some of my shader repositories:
+          </p>
+
+          <div class="row">
+            <a href="https://github.com/2020wmarvil/ShaderCookbook" target="_blank"><button class="btn41-43 btn-41 bt">Shader Cookbook</button></a>
+            <a href="https://github.com/2020wmarvil/UnrealShaderTechniques" target="_blank"><button class="btn41-43 btn-41 bt">Unreal Shader Techniques</button></a>
+            <a href="https://www.shadertoy.com/profile/?show=shaders" target="_blank"><button class="btn41-43 btn-41 bt">Shadertoy</button></a>
+          </div>
+
+          <div class="custom-shape-divider-top-1630367696">
+              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                  <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+              </svg>
+          </div>
+      </section>
+        <section style="padding-bottom: 0;">
+            <h1>Contact Me</h1><br>
+            <p class="p-large">You can reach me by email at <a href="mailto: 2020wmarvil@gmail.com">2020wmarvil@gmail.com</a>.  </p>
+            <br>
+            <p class="p-large" > This website was built from scratch by myself and my amazing girlfriend <a href="https://briannata.github.io/" target="_blank">Brianna Ta</a>, who specializes in full-stack software engineering.  </p>
+
+            <div class="wrapper">
+              <div class="icon github">
+                <span><i class="fab fa-github"></i></span>
+              </div>
+              <div class="icon linkedin">
+                <span><i class="fab fa-linkedin"></i></span>
+              </div>
+              <div class="icon youtube">
+                <span><i class="fab fa-youtube"></i></span>
+              </div>
+              <div class="icon itch">
+                <span><i class="fab fa-itch-io"></i></span>
+              </div>
+              <div class="icon steam">
+                <span><i class="fab fa-steam"></i></span>
+              </div>
+            </div>
+
+            <div class="custom-shape-divider-top-1630369170">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+        <img class="footer-img no-select" src="./images/layered-waves-haikei.svg" />
+        <script src="js/filter.js"></script>
+                
     </body>
 </html>

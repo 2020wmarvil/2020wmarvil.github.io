@@ -1,0 +1,374 @@
+html {
+    scroll-behavior: smooth;
+    place-items: center;
+}
+
+body {
+    font-family: "Source Sans Pro", sans-serif; /*font-family: 'Nunito', sans-serif;*/
+    color: #dadada;
+    background: #202731;
+    font-size: 1.2em;
+    line-height: 1.4em;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+figure {
+  background-color: #14171b;
+  padding-top: 1em;
+  box-shadow: 0 0 3px 3px #14171b;
+}
+
+figcaption {
+  font-size: 0.8em;
+  color: #dadada85
+}
+
+.container{
+    position: relative;
+    min-height: 100%;
+}
+
+.header{
+    display: inline-block;
+    background: #181e25;
+    width: 100%;
+    height: 6vh;
+    position: relative;
+}
+
+.content{
+    display: inline-block;
+    width: 100%;
+ }
+
+.footer{
+    width: 100%;
+    height: auto;
+}
+
+/* NAVBAR */
+.navbar-buttons {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.navbar-buttons li {
+    display: inline;
+    float: left;
+}
+
+.navbar-buttons li:last-child {
+    display: inline;
+    float: right;
+}
+
+.navbar-buttons .navbar-name {
+    top: 0;
+    display: block;
+    padding: 10px;
+    margin-right: 5px;
+    font-size: 1.5em;
+}
+
+.navbar-buttons a {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    color: #dadada;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 5px;
+    border: none;
+    font-size: 1.5em;
+    transition: all 0.5s;
+}
+.navbar-buttons a {
+    display: block;
+    padding: 10px;
+    margin-right: 5px;
+    font-size: 1.5em;
+    transition: all 0.5s;
+}
+
+.navbar-buttons a {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.navbar-buttons a:after {
+    content: '»';
+    position: absolute;
+    font-size: 1.2em;
+    opacity: 0;  
+    right: -12px;
+    top: 9px;
+    transition: 0.5s;
+}
+
+.navbar-buttons a:hover:after {
+    opacity: 1;
+    right: -10px;
+}
+
+a {
+    color: #FF8E72;
+}
+
+/* ARTICLE CONTENT */
+
+h1 {
+    font-size: 3.6rem;
+    line-height: 4.6rem;
+    margin: 0;
+    font-family: Lato, Helvetica, sans-serif;
+    font-weight: 700;
+    margin-top: 3vh;
+}
+
+h2 {
+  display: flex;
+  float: left;
+  width: 100%;
+}
+
+.posted-on {
+    margin-left: 0;
+    margin-right: 1.5rem;
+}
+
+.post-meta i {
+    text-align: center;
+    width: 1.6rem;
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+.date {
+    color: #e8eef2;
+    font-size: 0.9em
+}
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
+
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.inner-content {
+    flex: 1;
+    display: flex;
+    /*margin-top: 1.6rem;*/
+    margin-bottom: 3.2rem;
+}
+
+article {
+    display: block;
+}
+
+.post-container {
+    margin: 0;
+    width: 100%;
+}
+
+.article-content {
+    color: #e8eef2;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* FOOTER */
+
+.footer-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100%;
+    vertical-align: top;
+}
+
+img {
+    max-width: 50vw;
+}
+
+/* #################### SOCIAL BUTTONS ######################## */
+/*
+.icon {
+  position: relative;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 0.1em;
+  height: 0.1em;
+  font-size: 1.1250em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.inner-icon {
+
+  width: 50%;
+  margin: 0 auto;
+}
+
+.icon-div {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.github {
+  background-color: #dadada;
+  color: #333333;
+}
+.github:hover {
+  background-color: #333333;
+  color: #dadada;
+}
+.youtube {
+  background-color: #dadada;
+  color: #de463b;
+}
+.youtube:hover {
+  background-color: #de463b;
+  color: #dadada;
+}
+.steam {
+  background-color: #dadada;
+  color: #1C2431;
+}
+.steam:hover {
+  background-color: #1C2431;
+  color: #dadada;
+}
+.itch {
+  background-color: #dadada;
+  color: #FA5C5C;
+}
+.itch:hover {
+  background-color: #FA5C5C;
+  color: #dadada;
+}
+.linkedin {
+  background-color: #dadada;
+  color: #0A66C2; 
+}
+.linkedin:hover {
+  background-color: #0A66C2; 
+  color: #dadada;
+}*/
+
+.icon-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+}
+
+.icon-wrapper .icon {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.8em;
+  font-size: 	1.1250em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icon-wrapper .icon:first-child {
+  margin-left: 0;
+}
+
+.icon-internal {
+  position: absolute;
+  top: 50%;
+}
+
+.github {
+  background-color: #ffffff;
+  color: #333333;
+}
+.icon-wrapper .github:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+.youtube {
+  background-color: #ffffff;
+  color: #de463b;
+}
+.icon-wrapper .youtube:hover {
+  background-color: #de463b;
+  color: #ffffff;
+}
+.steam {
+  background-color: #ffffff;
+  color: #1C2431;
+}
+.icon-wrapper .steam:hover {
+  background-color: #1C2431;
+  color: #ffffff;
+}
+.itch {
+  background-color: #ffffff;
+  color: #FA5C5C;
+}
+.icon-wrapper .itch:hover {
+  background-color: #FA5C5C;
+  color: #ffffff;
+}
+.linkedin {
+  background-color: #ffffff;
+  color: #0A66C2; 
+}
+.icon-wrapper .linkedin:hover {
+  background-color: #0A66C2; 
+  color: #ffffff;
+}
