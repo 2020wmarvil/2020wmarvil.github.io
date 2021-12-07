@@ -183,6 +183,7 @@ section {
 }
 
 .container a {
+    text-decoration: none;
 }
   
 .filterDiv {
