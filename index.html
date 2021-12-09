@@ -408,9 +408,19 @@
       </section>
         <section style="padding-bottom: 0;">
             <h1>Contact Me</h1><br>
-            <p class="p-large">You can reach me by email at <a href="mailto: 2020wmarvil@gmail.com">2020wmarvil@gmail.com</a>.  </p>
-            <br>
-            <p class="p-large" > This website was built from scratch by myself and my amazing girlfriend <a href="https://briannata.github.io/" target="_blank">Brianna Ta</a>, who specializes in full-stack software engineering.  </p>
+
+            <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/mbjwjdde" method="post">
+              <fieldset id="fs-frm-inputs">
+                <label for="email-address">Email Address</label>
+                <input type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" required="">
+                <label for="subject">Subject</label>
+                <input name="subject" placeholder="..." />
+                <label for="message">Message</label>
+                <textarea rows="8" name="message" id="message" placeholder="..." required=""></textarea>
+                <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+              </fieldset>
+              <input class="button" type="submit" value="Submit">
+            </form>
 
             <div class="wrapper">
               <div class="icon github">
@@ -429,6 +439,8 @@
                 <span><i class="fab fa-steam"></i></span>
               </div>
             </div>
+
+            <p class="p-large" style="padding-top: 3rem;"> This website was built from scratch by myself and my amazing girlfriend <a href="https://briannata.github.io/" target="_blank">Brianna Ta</a>, who specializes in full-stack software engineering.  </p>
 
             <div class="custom-shape-divider-top-1630369170">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
